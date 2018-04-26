@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NCU HEMS</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="content-type" charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="jquery-3.2.1.slim.min.js"></script>
+	<script type="text/javascript" src="Chart.js"></script>
+	<script type="text/javascript" src="dl_header.js"></script>
+	<script type="text/javascript" src="data_ai.js"></script>
+	<script type="text/javascript" src="trend_p1.js"></script>
+	<script type="text/javascript" src="trend_p2.js"></script>
+	<script type="text/javascript" src="trend_p3.js"></script>
+	<script type="text/javascript" src="trend_p4.js"></script>
+	<script type="text/javascript" src="trend_p5.js"></script>
+	<script type="text/javascript" src="dl_header.js"></script>
+	<script language="JavaScript">
+            //タイマーをセットsruuhl
+    function tm(){
+        tm = setInterval("location.reload()",1000*110);
+        onoff();
+    }
+    function onoff(){
+    	var aiArray = [0,0,20,0,1,100,20,0,0,0,230,0,0,0,10];
+    	for (var i = 0; i <15; i++) {
+    		aiArray[i] = Number(ai_per[i]);
+    	}
+    	
+    	for (var i = 0; i < aiArray.length; i++) {
+    		if(aiArray[i]>0){
+    			$(".room div.CH"+(i+1)+"").addClass("on");
+    		}else{
+    			$(".room div.CH"+(i+1)+"").removeClass("on");
+    		}
+    	}
+    	
+
+    }
+    </script>
+</head>
+
+<body onLoad="tm()">
+	<header>NCU HEMS</header>
+	<div class="main">
+		<div class="section">
+			<div class="section_title">電力使用量</div>
+			<div class="section_contents">
+				<div class="canvas_rapper">
+				<canvas id="myChart" width="400" height="400"></canvas>
+				<script>
+				// var today = new Date(year,mon-1,day,hour,min);
+		  //   	var two_weeks_ago = new Date();
+		  //   	two_weeks_ago = today.setDate(today.getDate() - 14);
+		  //   	var day = two_weeks_ago.getDay();
+		  //   	var tmp = 0;
+		  //   	for (var i = day; i=<8 ; i++) {
+		  //   		tmp ++;
+		  //   	}
+		  //   	var a_week_ago = new Date();
+		  //   	a_week_ago = two_weeks_ago.setDate(two_weeks_ago.getDate() - tmp );
+		  function getDaynum(num){
+		  	var Daynum =0;
+		  	if(num ==0){Daynum =6;
+		  	}else{
+		  		Daynum = num - 1;
+		  	}
+		  	return Daynum;
+		  }
+		  		var weekGoalArray = [1000,1000,1000,1000,1000,1000,1000];
+				var lastWeekArray = [0,0,0,0,0,0,0];
+    			var thisWeekArray = [0,0,0,0,0,0,0];
+    			
+    			var today = new Date(year,mon-1,day,hour,min);
+    			var k = 0;
+    			
+				for (var j = hour; j >= 0; j--) {
+					thisWeekArray[getDaynum(today.getDay())] += trend_p1_ch4[trend_p1_ch1.length-1-k];
+					console.log(trend_p1_ch4[trend_p1_ch1.length-1-k]);
+					k++;
+					
+				}
+				
+				if(getDaynum(today.getDay())!=0){
+					for (var i = getDaynum(today.getDay())-1; i >= 0; i--) {
+						for (var j = 23; j >= 0; j--) {
+							if(trend_p1_ch1.length <= k){
+							break;
+							}
+							thisWeekArray[i] += trend_p1_ch4[trend_p1_ch1.length-1-k];
+							console.log(trend_p1_ch4[trend_p1_ch1.length-1-k]);
+							k++;
+
+						}
+					
+					}
+
+				}	
+				
+				
+				for (var i = 6; i >= 0; i--) {
+					for (var j = 23; j >= 0; j--) {
+						if(trend_p1_ch1.length <= k){
+							break;
+						}
+						lastWeekArray[i] += trend_p1_ch4[trend_p1_ch1.length-1-k];
+						console.log(trend_p1_ch4[trend_p1_ch1.length-1-k]);
+						k++;
+					}
+					
+				}
+				for (var i = 6; i >= 0; i--) {
+						if(lastWeekArray[i] == 0){
+							lastWeekArray[i] = 1500;
+						}
+				}
+
+				
+				// lastWeekArray = [13,12,14,13,15,4,3];
+    // 			thisWeekArray = [14,12,12,13,15,2,3];
+				var ctx = document.getElementById("myChart").getContext('2d');
+				var myChart = new Chart(ctx, {
+				    type: 'bar',
+				    data: {
+				        labels: ["目標", "先週", "今週"],
+				        datasets: [{
+				            label: '月曜日',
+				            data: [weekGoalArray[0],lastWeekArray[0],thisWeekArray[0]],
+				            backgroundColor: [
+				                '#91ff4d',
+				                '#91ff4d',
+				                '#91ff4d'				              
+				            ],
+				            borderColor: [
+				                '#59d817',
+				                '#59d817',
+				                '#59d817'
+				            ],
+				            borderWidth: 1
+				        },
+				        {
+				            label: '火曜日',
+				            data: [weekGoalArray[1],lastWeekArray[1], thisWeekArray[1]],
+				            backgroundColor: [
+				                '#91ff4d',
+				                '#91ff4d',
+				                '#91ff4d'	
+				            ],
+				            borderColor: [
+				                '#59d817',
+				                '#59d817',
+				                '#59d817'
+				            ],
+				            borderWidth: 1
+				        },
+				        {
+				            label: '水曜日',
+				            data: [weekGoalArray[2],lastWeekArray[2], thisWeekArray[2]],
+				            backgroundColor: [
+				                '#91ff4d',
+				                '#91ff4d',
+				                '#91ff4d'	
+				            ],
+				            borderColor: [
+				                '#59d817',
+				                '#59d817',
+				                '#59d817'
+				            ],
+				            borderWidth: 1
+				        },
+				        {
+				            label: '木曜日',
+				            data: [weekGoalArray[3],lastWeekArray[3], thisWeekArray[3]],
+				            backgroundColor: [
+				                '#91ff4d',
+				                '#91ff4d',
+				                '#91ff4d'	
+				            ],
+				            borderColor: [
+				                '#59d817',
+				                '#59d817',
+				                '#59d817'
+				            ],
+				            borderWidth: 1
+				        },
+				        {
+				            label: '金曜日',
+				            data: [weekGoalArray[4],lastWeekArray[4], thisWeekArray[4]],
+				            backgroundColor: [
+				                '#91ff4d',
+				                '#91ff4d',
+				                '#91ff4d'	
+				            ],
+				            borderColor: [
+				                '#59d817',
+				                '#59d817',
+				                '#59d817'
+				            ],
+				            borderWidth: 1
+				        },
+				        {
+				            label: '土曜日',
+				            data: [weekGoalArray[5],lastWeekArray[5], thisWeekArray[5]],
+				            backgroundColor: [
+				                '#91ff4d',
+				                '#91ff4d',
+				                '#91ff4d'	
+				            ],
+				            borderColor: [
+				                '#59d817',
+				                '#59d817',
+				                '#59d817'
+				            ],
+				            borderWidth: 1
+				        },
+				        {
+				            label: '日曜日',
+				            data: [weekGoalArray[6],lastWeekArray[6], thisWeekArray[6]],
+				            backgroundColor: [
+				                '#91ff4d',
+				                '#91ff4d',
+				                '#91ff4d'	
+				            ],
+				            borderColor: [
+				                '#59d817',
+				                '#59d817',
+				                '#59d817'
+				            ],
+				            borderWidth: 1
+				        }]
+				    },
+				    options: {
+				        scales: {
+				        	xAxes: [{
+           					 	stacked: true,
+        					}],
+				            yAxes: [{
+				            	stacked: true,
+				                ticks: {
+				                    beginAtZero:true
+				                }
+				            }]
+				        },
+				        legend: {
+				            display: false,
+				        }
+				    }
+				});
+				</script>
+				</div>
+			</div>
+		</div>
+		<div class="section" id ="factry">
+			<div class="section_title">工場</div>
+			<div class="section_contents">
+				<div class="room">
+					<div class="F1 CH4"><img src="light.png">④</div>
+					<div class="F4 CH7"><img src="light.png">⑦</div>
+					<div class="F7 CH10"><img src="light.png">⑩</div>
+					<div class="F10 CH13"><img src="light.png">⑬</div>
+					<div class="F2 CH5"><img src="light.png">⑤</div>
+					<div class="F5 CH8"><img src="light.png">⑧</div>
+					<div class="F8 CH11"><img src="light.png">⑪</div>
+					<div class="F11 CH14"><img src="light.png">⑭</div>
+					<div class="F3 CH6"><img src="light.png">⑥</div>
+					<div class="F6 CH9"><img src="light.png">⑨</div>
+					<div class="F9 CH12"><img src="light.png">⑫</div>
+					<div class="F12 CH15"><img src="light.png">⑮</div>
+					<div id="server_room">サーバールーム</div>
+				</div>
+			</div>
+		</div>
+		<div class="section" id="A202">
+			<div class="section_title">A202</div>
+			<div class="section_contents">
+				<div class="room">
+					<div class="F13 CH3"><img src="light.png">③</div>
+				</div>
+			</div>
+		</div>
+		<div class="section" id="A203">
+			<div class="section_title">A203</div>
+			<div class="section_contents">
+				<div class="room">
+					<div class="F15 A203_1 CH2">①</div>
+					<div class="F14 A203_2 CH2"><img src="light.png">②</div>
+					<div class="F15 A203_3 CH1"><img src="light.png">①</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
