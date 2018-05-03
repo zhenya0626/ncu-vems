@@ -1,10 +1,252 @@
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title>NCU HEMS</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="content-type" charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<style type="text/css">
+		body{
+			background-color: #EAEAEA;
+		}
+		header{
+			background-color: #388646;
+			height:36px;
+			padding:30px;
+			color: #FFF; font-size: 33px; font-weight: bold;
+		}
+		footer{
+			/*width: 100%;*/
+			background-color: #388646;
+			height:20px;
+			padding:30px;
+			color: #FFF; font-size: 10px; font-weight: bold;
+			text-align: right;
+			padding-right: 50px;
+		}
+		.main{
+			margin:30px auto;
+			/*width:1110px;*/
+		    display: flex;
+		    flex-wrap: wrap;
+		    justify-content: center;
+		}
+		.section{
+			/*float:left;*/
+			margin:50px 50px 25px;
+			box-shadow:4px 4px 4px rgba(0,0,0,0.2);
+			border-radius: 3px 3px 3px 3px;
+			height: 600px;
+			width:435px;
+			min-width: 348px;
+
+		}
+		.section_title{
+			background-color: #388646;
+			height:6%;
+			color: white;
+    		text-align: center;
+    		border-radius: 3px 3px 0 0;
+    		line-height: 34px;
+		}
+		.section_contents{
+			background-color: white;
+			height: 94%;
+			border-radius: 0 0 3px 3px;
+			position:relative;		
+		}
+		.room{
+		    position: absolute;
+		    top: 15%;
+		    left: 10%;
+		    width: 80%;
+		    height: 72%;
+		    border-radius: 10px;
+		}
+		.room div{
+			float:left;
+			background-color: #5A5858;
+			border:solid 1px #95989A;
+			color:#5A5858;
+			font-weight: bold;
+			font-size: 24px;
+			text-align: center;
+		}
+		#A203 .room div.door,#A202 .room div.door{
+			background-color: rgba(0,0,0,0);
+			width:20%;
+			height: 20%;
+		}
+		#A202 .room div.door1,#A203 .room div.door1{
+			border-radius: 0 0 55px 0;
+		    position: absolute;
+		    top: 10%;
+		    left: 0%;
+	
+		}
+		#A202 .room div.door2,#A203 .room div.door2{
+			border-radius: 0 55px 0 0;
+		    position: absolute;
+		    top: 70%;
+		    left: 0%;
+
+		}
+		#factry .room div{
+			width:24.4%;
+			height:33.3%;
+    		line-height: 147px;
+    		position: relative;
+		}
+		#factry .room div.F1{
+	        border-radius: 10px 0 0 0;		
+		}
+		#factry .room div.F3{
+	        border-radius: 0 0 0 10px;		
+		}
+		#factry .room div.F10{
+	        border-radius: 0 10px 0 0;		
+		}
+		#factry .room div.F12{
+	        border-radius: 0 0 10px 0;		
+		}
+		#factry .room div#server_room{
+			background-color: #C4C4C4;
+		    left: 25%;
+		    top: 52%;
+		    width: 74%;
+		    height: 15%;
+		    position: absolute;
+		    line-height: 400%;
+		    color:#797979;
+		    font-size: 15px;
+		}
+		#factry .room div.F5,#factry .room div.F8,#factry .room div.F11{
+			line-height: 85px;
+		}
+		#A202 .room div{
+			width:100%;
+			height:100%;
+    		line-height: 147px;
+    		border-radius:10px; 
+
+		}
+		#A203 .room div{
+			width:32%;
+			height:66.6%;
+			line-height: 147px;
+		}
+		#A203 .room div.A203_1{
+			border-bottom: solid 1px #5a5858;
+			border-radius: 10px 0 0 0;
+		}
+		#A203 .room div.A203_2{
+			width:66.8%;
+			border-radius: 0 10px 0 0;
+		}
+		#A203 .room div.A203_3{
+			width:99.5%;
+			height:33.3%;
+			border-top: none;
+			line-height: 147px;
+			border-radius: 0 0 10px 10px;
+		}
+		div.on{
+			background-color: #FFE760;
+			color:#FFE760;
+		}
+		.room div.on img{
+			width:26px;
+			height:26px;
+			position: absolute;
+			display: inline-block;
+		}
+		img{
+			width:26px;
+			height:26px;
+			position: absolute;
+			display: none;
+		}
+		.canvas_rapper{
+ 			width: 80%;
+ 			margin:auto;
+ 			position: absolute;
+    		top: 18%;
+    		left:10%;
+		}
+		.w{
+			color: #5a5858;
+		    text-align: center;
+		    padding-top: 4%;
+		}
+		.legend{
+			display: flex;
+		    justify-content: stretch;
+		    position: absolute;
+		    top: 90%;
+		    left: 60%;
+		    width: 25%;
+		    border-radius: 10px;
+		}
+		.legend div{
+			background-color: #5A5858;
+			border:solid 1px #95989A;
+			color:#797979;
+			text-align: center;
+			width:50%;
+		}
+		.legend div.on{
+			background-color: #FFE760;
+			color:#ffffff;
+		}
+		#server_room{
+			font-size: 24px;
+		}
+		.enter{
+		    position: absolute;
+		    width: 34%;
+		    height: 11.3%;
+		    z-index: 9999;
+		    background: #C4C4C4;
+		    top: -16px;
+		    text-align: center;
+		    border-radius: 10px 0 0 0;
+		    border: solid 1px #95989A;
+		    color: #797979;
+		    font-weight: 600;
+		}
+
+		@media screen and (max-width: 1083px) {
+		  /* スマホ用のスタイル */
+		  	header{
+				height:75px;
+			}
+		  .section {
+			    margin: 10px auto;
+			    box-shadow: 4px 4px 4px rgba(0,0,0,0.2);
+			    border-radius: 3px 3px 3px 3px;
+			    height: 480px;
+			    width: 348px;
+			    float: unset;
+			}
+			#factry .room div {
+			    width: 24.2%;
+			}
+			#A203 .room div.A203_2 {
+			    width: 66.5%;
+			}
+		}
+
+
+	</style>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117855791-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-117855791-1');
+	</script>
 	<script type="text/javascript" src="jquery-3.2.1.slim.min.js"></script>
 	<script type="text/javascript" src="Chart.js"></script>
 	<script type="text/javascript" src="dl_header.js"></script>
@@ -16,9 +258,9 @@
 	<script type="text/javascript" src="trend_p5.js"></script>
 	<script type="text/javascript" src="dl_header.js"></script>
 	<script language="JavaScript">
-            //タイマーをセットsruuhl
+            //タイマーをセット
     function tm(){
-        tm = setInterval("location.reload()",1000*110);
+        // tm = setInterval("location.reload()",1000*10);
         onoff();
     }
     function onoff(){
@@ -34,14 +276,29 @@
     			$(".room div.CH"+(i+1)+"").removeClass("on");
     		}
     	}
+    	//工場
+    	var factry = 0;
+    	for(var i = 3; i < aiArray.length; i++){
+    		factry += 995/131.5*aiArray[i]
+    	}
+    	 $(".w_factry").html("現在の電力消費量は"+Math.round(factry)+"W<br>1時間あたり約"+Math.round(factry*23.7/1000)+"円です。");
+    	//203
+    	var a203 = aiArray[2]*995/131.5;
+    	 $(".w_a203").html("現在の電力消費量は"+Math.round(a203)+"W<br>1時間あたり約"+Math.round(a203*23.7/1000)+"円です。");
+
+    	//202
+    	var a202 = aiArray[0]*995/131.5+aiArray[1]*995/131.5;
+    	 $(".w_a202").html("現在の電力消費量は"+Math.round(a202)+"W<br>1時間あたり約"+Math.round(a202*23.7/1000)+"円です。");
+
     	
 
     }
     </script>
+
 </head>
 
 <body onLoad="tm()">
-	<header>NCU HEMS</header>
+	<header>NCU VEMS エネルギー可視化システム</header>
 	<div class="main">
 		<div class="section">
 			<div class="section_title">電力使用量</div>
@@ -67,7 +324,7 @@
 		  	}
 		  	return Daynum;
 		  }
-		  		var weekGoalArray = [1000,1000,1000,1000,1000,1000,1000];
+		  		var weekGoalArray = [20000,20000,20000,20000,20000,20000,20000];
 				var lastWeekArray = [0,0,0,0,0,0,0];
     			var thisWeekArray = [0,0,0,0,0,0,0];
     			
@@ -75,8 +332,21 @@
     			var k = 0;
     			
 				for (var j = hour; j >= 0; j--) {
-					thisWeekArray[getDaynum(today.getDay())] += trend_p1_ch4[trend_p1_ch1.length-1-k];
-					console.log(trend_p1_ch4[trend_p1_ch1.length-1-k]);
+					thisWeekArray[getDaynum(today.getDay())] += 995/131.5*trend_p1_ch1[trend_p1_ch1.length-1-k]/1000;
+					thisWeekArray[getDaynum(today.getDay())] += 995/131.5*trend_p1_ch2[trend_p1_ch1.length-1-k]/1000;
+					thisWeekArray[getDaynum(today.getDay())] += 995/131.5*trend_p1_ch3[trend_p1_ch1.length-1-k]/1000;
+					thisWeekArray[getDaynum(today.getDay())] += 995/131.5*trend_p1_ch4[trend_p1_ch1.length-1-k]/1000;
+					thisWeekArray[getDaynum(today.getDay())] += 995/131.5*trend_p2_ch1[trend_p1_ch1.length-1-k]/1000;
+					thisWeekArray[getDaynum(today.getDay())] += 995/131.5*trend_p2_ch2[trend_p1_ch1.length-1-k]/1000;
+					thisWeekArray[getDaynum(today.getDay())] += 995/131.5*trend_p2_ch3[trend_p1_ch1.length-1-k]/1000;
+					thisWeekArray[getDaynum(today.getDay())] += 995/131.5*trend_p2_ch4[trend_p1_ch1.length-1-k]/1000;
+					thisWeekArray[getDaynum(today.getDay())] += 995/131.5*trend_p3_ch1[trend_p1_ch1.length-1-k]/1000;
+					thisWeekArray[getDaynum(today.getDay())] += 995/131.5*trend_p3_ch2[trend_p1_ch1.length-1-k]/1000;
+					thisWeekArray[getDaynum(today.getDay())] += 995/131.5*trend_p3_ch3[trend_p1_ch1.length-1-k]/1000;
+					thisWeekArray[getDaynum(today.getDay())] += 995/131.5*trend_p3_ch4[trend_p1_ch1.length-1-k]/1000;
+					thisWeekArray[getDaynum(today.getDay())] += 995/131.5*trend_p4_ch1[trend_p1_ch1.length-1-k]/1000;
+					thisWeekArray[getDaynum(today.getDay())] += 995/131.5*trend_p4_ch2[trend_p1_ch1.length-1-k]/1000;
+					thisWeekArray[getDaynum(today.getDay())] += 995/131.5*trend_p4_ch3[trend_p1_ch1.length-1-k]/1000;
 					k++;
 					
 				}
@@ -87,8 +357,22 @@
 							if(trend_p1_ch1.length <= k){
 							break;
 							}
-							thisWeekArray[i] += trend_p1_ch4[trend_p1_ch1.length-1-k];
-							console.log(trend_p1_ch4[trend_p1_ch1.length-1-k]);
+							thisWeekArray[i] += 995/131.5*trend_p1_ch1[trend_p1_ch1.length-1-k]/1000;
+							thisWeekArray[i] += 995/131.5*trend_p1_ch2[trend_p1_ch1.length-1-k]/1000;
+							thisWeekArray[i] += 995/131.5*trend_p1_ch3[trend_p1_ch1.length-1-k]/1000;
+							thisWeekArray[i] += 995/131.5*trend_p1_ch4[trend_p1_ch1.length-1-k]/1000;
+							thisWeekArray[i] += 995/131.5*trend_p2_ch1[trend_p1_ch1.length-1-k]/1000;
+							thisWeekArray[i] += 995/131.5*trend_p2_ch2[trend_p1_ch1.length-1-k]/1000;
+							thisWeekArray[i] += 995/131.5*trend_p2_ch3[trend_p1_ch1.length-1-k]/1000;
+							thisWeekArray[i] += 995/131.5*trend_p2_ch4[trend_p1_ch1.length-1-k]/1000;
+							thisWeekArray[i] += 995/131.5*trend_p3_ch1[trend_p1_ch1.length-1-k]/1000;
+							thisWeekArray[i] += 995/131.5*trend_p3_ch2[trend_p1_ch1.length-1-k]/1000;
+							thisWeekArray[i] += 995/131.5*trend_p3_ch3[trend_p1_ch1.length-1-k]/1000;
+							thisWeekArray[i] += 995/131.5*trend_p3_ch4[trend_p1_ch1.length-1-k]/1000;
+							thisWeekArray[i] += 995/131.5*trend_p4_ch1[trend_p1_ch1.length-1-k]/1000;
+							thisWeekArray[i] += 995/131.5*trend_p4_ch2[trend_p1_ch1.length-1-k]/1000;
+							thisWeekArray[i] += 995/131.5*trend_p4_ch3[trend_p1_ch1.length-1-k]/1000;
+							
 							k++;
 
 						}
@@ -103,15 +387,28 @@
 						if(trend_p1_ch1.length <= k){
 							break;
 						}
-						lastWeekArray[i] += trend_p1_ch4[trend_p1_ch1.length-1-k];
-						console.log(trend_p1_ch4[trend_p1_ch1.length-1-k]);
+						lastWeekArray[i] += 995/131.5*trend_p1_ch1[trend_p1_ch1.length-1-k]/1000;
+						lastWeekArray[i] += 995/131.5*trend_p1_ch2[trend_p1_ch1.length-1-k]/1000;
+						lastWeekArray[i] += 995/131.5*trend_p1_ch3[trend_p1_ch1.length-1-k]/1000;
+						lastWeekArray[i] += 995/131.5*trend_p1_ch4[trend_p1_ch1.length-1-k]/1000;
+						lastWeekArray[i] += 995/131.5*trend_p2_ch1[trend_p1_ch1.length-1-k]/1000;
+						lastWeekArray[i] += 995/131.5*trend_p2_ch2[trend_p1_ch1.length-1-k]/1000;
+						lastWeekArray[i] += 995/131.5*trend_p2_ch3[trend_p1_ch1.length-1-k]/1000;
+						lastWeekArray[i] += 995/131.5*trend_p2_ch4[trend_p1_ch1.length-1-k]/1000;
+						lastWeekArray[i] += 995/131.5*trend_p3_ch1[trend_p1_ch1.length-1-k]/1000;
+						lastWeekArray[i] += 995/131.5*trend_p3_ch2[trend_p1_ch1.length-1-k]/1000;
+						lastWeekArray[i] += 995/131.5*trend_p3_ch3[trend_p1_ch1.length-1-k]/1000;
+						lastWeekArray[i] += 995/131.5*trend_p3_ch4[trend_p1_ch1.length-1-k]/1000;
+						lastWeekArray[i] += 995/131.5*trend_p4_ch1[trend_p1_ch1.length-1-k]/1000;
+						lastWeekArray[i] += 995/131.5*trend_p4_ch2[trend_p1_ch1.length-1-k]/1000;
+						lastWeekArray[i] += 995/131.5*trend_p4_ch3[trend_p1_ch1.length-1-k]/1000;
 						k++;
 					}
 					
 				}
 				for (var i = 6; i >= 0; i--) {
 						if(lastWeekArray[i] == 0){
-							lastWeekArray[i] = 1500;
+							lastWeekArray[i] = 15;
 						}
 				}
 
@@ -122,109 +419,102 @@
 				var myChart = new Chart(ctx, {
 				    type: 'bar',
 				    data: {
-				        labels: ["目標", "先週", "今週"],
+				        labels: ["先週", "今週"],
 				        datasets: [{
 				            label: '月曜日',
-				            data: [weekGoalArray[0],lastWeekArray[0],thisWeekArray[0]],
+				            data: [lastWeekArray[0],thisWeekArray[0]],
 				            backgroundColor: [
-				                '#91ff4d',
-				                '#91ff4d',
-				                '#91ff4d'				              
+				                '#388646',
+				                '#388646'				              
 				            ],
 				            borderColor: [
-				                '#59d817',
-				                '#59d817',
-				                '#59d817'
+				                '#388646',
+				                '#388646',
+				                '#388646'
 				            ],
 				            borderWidth: 1
 				        },
 				        {
 				            label: '火曜日',
-				            data: [weekGoalArray[1],lastWeekArray[1], thisWeekArray[1]],
+				            data: [lastWeekArray[1], thisWeekArray[1]],
 				            backgroundColor: [
-				                '#91ff4d',
-				                '#91ff4d',
-				                '#91ff4d'	
+				                '#439553',
+				                '#439553'
 				            ],
 				            borderColor: [
-				                '#59d817',
-				                '#59d817',
-				                '#59d817'
+				                '#439553',
+				                '#439553',
+				                '#439553'
 				            ],
 				            borderWidth: 1
 				        },
 				        {
 				            label: '水曜日',
-				            data: [weekGoalArray[2],lastWeekArray[2], thisWeekArray[2]],
+				            data: [lastWeekArray[2], thisWeekArray[2]],
 				            backgroundColor: [
-				                '#91ff4d',
-				                '#91ff4d',
-				                '#91ff4d'	
+				                '#7ba555',
+				                '#7ba555'	
 				            ],
 				            borderColor: [
-				                '#59d817',
-				                '#59d817',
-				                '#59d817'
+				                '#7ba555',
+				                '#7ba555',
+				                '#7ba555'
 				            ],
 				            borderWidth: 1
 				        },
 				        {
 				            label: '木曜日',
-				            data: [weekGoalArray[3],lastWeekArray[3], thisWeekArray[3]],
+				            data: [lastWeekArray[3], thisWeekArray[3]],
 				            backgroundColor: [
-				                '#91ff4d',
-				                '#91ff4d',
-				                '#91ff4d'	
+				                '#b6a94f',
+				                '#b6a94f'
 				            ],
 				            borderColor: [
-				                '#59d817',
-				                '#59d817',
-				                '#59d817'
+				                '#b6a94f',
+				                '#b6a94f',
+				                '#b6a94f'
 				            ],
 				            borderWidth: 1
 				        },
 				        {
 				            label: '金曜日',
-				            data: [weekGoalArray[4],lastWeekArray[4], thisWeekArray[4]],
+				            data: [lastWeekArray[4], thisWeekArray[4]],
 				            backgroundColor: [
-				                '#91ff4d',
-				                '#91ff4d',
-				                '#91ff4d'	
+				                '#bbb84a',
+				                '#bbb84a'	
 				            ],
 				            borderColor: [
-				                '#59d817',
-				                '#59d817',
-				                '#59d817'
+				                '#bbb84a',
+				                '#bbb84a',
+				                '#bbb84a'
 				            ],
 				            borderWidth: 1
 				        },
 				        {
 				            label: '土曜日',
-				            data: [weekGoalArray[5],lastWeekArray[5], thisWeekArray[5]],
+				            data: [lastWeekArray[5], thisWeekArray[5]],
 				            backgroundColor: [
-				                '#91ff4d',
-				                '#91ff4d',
-				                '#91ff4d'	
+				                '#cccd50',
+				                '#cccd50'
 				            ],
 				            borderColor: [
-				                '#59d817',
-				                '#59d817',
-				                '#59d817'
+				                '#cccd50',
+				                '#cccd50',
+				                '#cccd50'
 				            ],
 				            borderWidth: 1
 				        },
 				        {
 				            label: '日曜日',
-				            data: [weekGoalArray[6],lastWeekArray[6], thisWeekArray[6]],
+				            data: [lastWeekArray[6], thisWeekArray[6]],
 				            backgroundColor: [
-				                '#91ff4d',
-				                '#91ff4d',
-				                '#91ff4d'	
+				                '#FFE760',
+				                '#FFE760'	
 				            ],
 				            borderColor: [
-				                '#59d817',
-				                '#59d817',
-				                '#59d817'
+				                '#FFE760',
+				                '#FFE760',
+				                '#FFE760'
 				            ],
 				            borderWidth: 1
 				        }]
@@ -236,14 +526,25 @@
         					}],
 				            yAxes: [{
 				            	stacked: true,
+				            	scaleLabel: {                 //軸ラベル設定
+			                       display: true,             //表示設定
+			                       labelString: 'kWh',  //ラベル
+			                       fontSize: 10               //フォントサイズ
+			                    },
 				                ticks: {
 				                    beginAtZero:true
 				                }
 				            }]
 				        },
 				        legend: {
-				            display: false,
-				        }
+			              	labels: {
+			                  	boxWidth:30,
+			                    padding:20 //凡例の各要素間の距離
+			              	},
+			              	position: 'bottom',
+			              	display: true
+			          	},
+				        animation: false
 				    }
 				});
 				</script>
@@ -252,8 +553,13 @@
 		</div>
 		<div class="section" id ="factry">
 			<div class="section_title">工場</div>
+		<!-- 	<div　class="now">現在の消費電力:
+			
+			</div> -->
 			<div class="section_contents">
+				<div class="w w_factry">現在の電力消費量</div>
 				<div class="room">
+					<p class="enter">入り口</p>
 					<div class="F1 CH4"><img src="light.png">④</div>
 					<div class="F4 CH7"><img src="light.png">⑦</div>
 					<div class="F7 CH10"><img src="light.png">⑩</div>
@@ -268,27 +574,47 @@
 					<div class="F12 CH15"><img src="light.png">⑮</div>
 					<div id="server_room">サーバールーム</div>
 				</div>
+				<div class="legend">
+					<div class="on">on</div>
+					<div class="off">off</div>
+				</div>
+				
 			</div>
 		</div>
 		<div class="section" id="A202">
-			<div class="section_title">A202</div>
+			<div class="section_title">A203</div>
 			<div class="section_contents">
+				<div class="w w_a203">現在の電力消費量</div>
 				<div class="room">
 					<div class="F13 CH3"><img src="light.png">③</div>
+					<div class="door1 door"></div>
+					<div class="door2 door"></div>
+				</div>
+				<div class="legend">
+					<div class="on">on</div>
+					<div class="off">off</div>
 				</div>
 			</div>
 		</div>
 		<div class="section" id="A203">
-			<div class="section_title">A203</div>
+			<div class="section_title">A202</div>
 			<div class="section_contents">
+				<div class="w w_a202">現在の電力消費量</div>
 				<div class="room">
-					<div class="F15 A203_1 CH2">①</div>
+					<div class="F15 A203_1 CH1">①</div>
 					<div class="F14 A203_2 CH2"><img src="light.png">②</div>
 					<div class="F15 A203_3 CH1"><img src="light.png">①</div>
+					<div class="door1 door"></div>
+					<div class="door2 door"></div>
+				</div>
+				<div class="legend">
+					<div class="on">on</div>
+					<div class="off">off</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
 </body>
+<footer>produced by Riana Uchima</footer>
 </html>
