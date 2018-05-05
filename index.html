@@ -228,7 +228,6 @@ function onoff(){
 				let trend_A203_per = [];
 				let trend_all_per = [];
 
-
 				let trend_factry_w = [];
 				let trend_A202_w = [];
 				let trend_A203_w = [];
@@ -273,6 +272,10 @@ function onoff(){
 					return wArray.map(function(value){return Math.round(value*23.7/1000)});
 				}
 
+
+
+
+
 				
 			function getDaynum(num){
 				var Daynum =0;
@@ -311,6 +314,7 @@ function onoff(){
 			}	
 			
 			
+			
 			for (var i = 6; i >= 0; i--) {
 				for (var j = 23; j >= 0; j--) {
 					if(trend_p1_ch1.length <= k){
@@ -326,8 +330,6 @@ function onoff(){
 						lastWeekArray[i] = 15;
 					}
 			}
-	
-	
 				var ctx = document.getElementById("myChart").getContext('2d');
 				var myChart = new Chart(ctx, {
 				    type: 'bar',
@@ -482,6 +484,52 @@ function onoff(){
 					<div class="off">off</div>
 				</div>
 				
+			</div>
+		</div>
+		<div class="section" id ="factry">
+			<div class="section_title">工場</div>
+
+			
+			<div class="section_contents overflow-x" style="overflow-x: scroll" >
+				<div style="width:1000px;">
+					<canvas id="myLine" style="width: 1000px; height: 400px;"></canvas>
+				</div>
+					<script>
+						let timeLabelArray = trend_p1_year.map(function(value,index){
+				return `${trend_p1_year[index]}年${trend_p1_mon[index]}月${trend_p1_day[index]}日${trend_p1_hour[index]}時`;
+})
+						
+						var ctx = document.getElementById("myLine");
+						var myLine = new Chart(ctx, {
+							type: 'line', // チャートのタイプ
+							data: { // チャートの内容
+								labels: timeLabelArray.slice(500),
+								datasets: [{
+									label: '電気料金',
+									lineTension: 0, // ベジェ曲線を無効化
+									data: trend_factry_yen.slice(500),
+									backgroundColor: 'RGBA(56,134,70, 0.4)',
+									borderColor: 'RGBA(56,134,70, 1)',
+									borderWidth: 1
+								// }, {
+								// 	label: 'green',
+								// 	data: [10, 14, 6, 8, 1, 4],
+								// 	backgroundColor: 'RGBA(77,169,155, 0.4)',
+								// 	borderColor: 'RGBA(77,169,155, 1)',
+								// 	borderWidth: 1
+								}]
+							},
+							options: { // チャートのその他オプション
+								scales: {
+									yAxes: [{
+										ticks: {
+											beginAtZero:true
+										}
+									}]
+								}
+							}
+						});
+					</script>
 			</div>
 		</div>
 		<div class="section" id="A202">
