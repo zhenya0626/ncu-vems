@@ -1,6 +1,7 @@
 
 body{
     background-color: #EAEAEA;
+    margin: 0;
 }
 header{
     background-color: #388646;
@@ -206,6 +207,23 @@ img{
     border: solid 1px #95989A;
     color: #797979;
     font-weight: 600;
+}
+.display_none{
+    display: none;
+}
+.change_mode {
+    position: absolute;
+    right: 3px;
+    cursor: pointer;
+    border: solid 1px RGBA(56,134,70, 1);
+    border-radius: 3px;
+    top: 3px;
+    background: #fff;
+}
+.scroll_wrapper{
+    box-sizing: border-box;
+    padding: 15px;
+    overflow-x: scroll;
 }
 
 @media screen and (max-width: 1083px) {
