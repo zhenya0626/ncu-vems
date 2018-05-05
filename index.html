@@ -263,21 +263,8 @@ function onoff(){
 				trend_A202_yen = wToYen(trend_A202_w);
 				trend_A203_yen = wToYen(trend_A203_w);
 				trend_all_yen = wToYen(trend_all_w);
-				console.log("trend_factry_per",trend_factry_per);
-				console.log("trend_A202_per",trend_A202_per);
-				console.log("trend_A203_per",trend_A203_per);
-				console.log("trend_all_per",trend_all_per);
-				console.log("trend_factry_w",trend_factry_w);
-				console.log("trend_A202_w",trend_A202_w);
-				console.log("trend_A203_w",trend_A203_w);
-				console.log("trend_all_w",trend_all_w);
-				console.log("trend_factry_yen",trend_factry_yen);
-				console.log("trend_A202_yen",trend_A202_yen);
-				console.log("trend_A203_yen",trend_A203_yen);
-				console.log("trend_all_yen",trend_all_yen);
+
 				// 単位変換（配列）％->W
-
-
 				function perToW(perArray){
 					return perArray.map(function(value){return value*995/131.5});
 				}
