@@ -454,15 +454,75 @@ let timeLabelArray = trend_p1_year.map(function (value, index) {
     return `${trend_p1_year[index]}年${trend_p1_mon[index]}月${trend_p1_day[index]}日${trend_p1_hour[index]}時`;
 })
 
-var ctx = document.getElementById("myLine");
-var myLine = new Chart(ctx, {
+var ctx1 = document.getElementById("chart_factry");
+var chart_factry = new Chart(ctx1, {
     type: 'line', // チャートのタイプ
     data: { // チャートの内容
         labels: timeLabelArray.slice(500),
         datasets: [{
-            label: '電気料金（円）',
+            label: '工場 電気料金（円）',
             lineTension: 0, // ベジェ曲線を無効化
             data: trend_factry_yen.slice(500),
+            backgroundColor: 'RGBA(56,134,70, 0.4)',
+            borderColor: 'RGBA(56,134,70, 1)',
+            borderWidth: 1
+            // }, {
+            // 	label: 'green',
+            // 	data: [10, 14, 6, 8, 1, 4],
+            // 	backgroundColor: 'RGBA(77,169,155, 0.4)',
+            // 	borderColor: 'RGBA(77,169,155, 1)',
+            // 	borderWidth: 1
+        }]
+    },
+    options: { // チャートのその他オプション
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+var ctx2 = document.getElementById("chart_A202");
+var chart_A202 = new Chart(ctx2, {
+    type: 'line', // チャートのタイプ
+    data: { // チャートの内容
+        labels: timeLabelArray.slice(500),
+        datasets: [{
+            label: 'A202 電気料金（円）',
+            lineTension: 0, // ベジェ曲線を無効化
+            data: trend_A202_yen.slice(500),
+            backgroundColor: 'RGBA(56,134,70, 0.4)',
+            borderColor: 'RGBA(56,134,70, 1)',
+            borderWidth: 1
+            // }, {
+            // 	label: 'green',
+            // 	data: [10, 14, 6, 8, 1, 4],
+            // 	backgroundColor: 'RGBA(77,169,155, 0.4)',
+            // 	borderColor: 'RGBA(77,169,155, 1)',
+            // 	borderWidth: 1
+        }]
+    },
+    options: { // チャートのその他オプション
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+var ctx3 = document.getElementById("chart_A203");
+var chart_A203 = new Chart(ctx3, {
+    type: 'line', // チャートのタイプ
+    data: { // チャートの内容
+        labels: timeLabelArray.slice(500),
+        datasets: [{
+            label: 'A203 電気料金（円）',
+            lineTension: 0, // ベジェ曲線を無効化
+            data: trend_A203_yen.slice(500),
             backgroundColor: 'RGBA(56,134,70, 0.4)',
             borderColor: 'RGBA(56,134,70, 1)',
             borderWidth: 1
@@ -492,5 +552,15 @@ $(function(){
         .on('click', function(){
             $('#factry .content_now').toggleClass('display_none');
             $('#factry .content_chart').toggleClass('display_none');
+        });
+    $('#A202 .change_mode')
+        .on('click', function(){
+            $('#A202 .content_now').toggleClass('display_none');
+            $('#A202 .content_chart').toggleClass('display_none');
+        });
+    $('#A203 .change_mode')
+        .on('click', function(){
+            $('#A203 .content_now').toggleClass('display_none');
+            $('#A203 .content_chart').toggleClass('display_none');
         });
 });

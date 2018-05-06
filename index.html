@@ -29,8 +29,6 @@
 <script type="text/javascript" src="dl_header.js"></script> -->
 <script src="https://d3js.org/d3.v5.min.js"></script>
 
-
-
 </head>
 
 <body onLoad="tm()">
@@ -76,15 +74,15 @@
 				<button class="change_mode">戻る</button>
 				<div class="scroll_wrapper">
 					<div style="width:1000px;">
-						<canvas id="myLine" style="width: 1000px; height: 430px;"></canvas>
+						<canvas id="chart_factry" style="width: 1000px; height: 430px;"></canvas>
 					</div>
-				</div>
-						
+				</div>		
 			</div>
 		</div>
-		<div class="section" id="A202">
+		<div class="section" id="A203">
 			<div class="section_title">A203</div>
-			<div class="section_contents">
+			<div class="section_contents content_now">
+				<button class="change_mode">グラフ</button>
 				<div class="w w_a203">現在の電力消費量</div>
 				<div class="room">
 					<div class="F13 CH3"><img src="light.png">③</div>
@@ -96,15 +94,24 @@
 					<div class="off">off</div>
 				</div>
 			</div>
+			<div class="section_contents content_chart display_none">
+				<button class="change_mode">戻る</button>
+				<div class="scroll_wrapper">
+					<div style="width:1000px;">
+						<canvas id="chart_A203" style="width: 1000px; height: 430px;"></canvas>
+					</div>
+				</div>		
+			</div>
 		</div>
-		<div class="section" id="A203">
+		<div class="section" id="A202">
 			<div class="section_title">A202</div>
-			<div class="section_contents">
+			<div class="section_contents content_now">
+				<button class="change_mode">グラフ</button>
 				<div class="w w_a202">現在の電力消費量</div>
 				<div class="room">
-					<div class="F15 A203_1 CH1">①</div>
-					<div class="F14 A203_2 CH2"><img src="light.png">②</div>
-					<div class="F15 A203_3 CH1"><img src="light.png">①</div>
+					<div class="F15 A202_1 CH1">①</div>
+					<div class="F14 A202_2 CH2"><img src="light.png">②</div>
+					<div class="F15 A202_3 CH1"><img src="light.png">①</div>
 					<div class="door1 door"></div>
 					<div class="door2 door"></div>
 				</div>
@@ -113,6 +120,14 @@
 					<div class="off">off</div>
 				</div>
 			</div>
+			<div class="section_contents content_chart display_none">
+					<button class="change_mode">戻る</button>
+					<div class="scroll_wrapper">
+						<div style="width:1000px;">
+							<canvas id="chart_A202" style="width: 1000px; height: 430px;"></canvas>
+						</div>
+					</div>		
+				</div>
 		</div>
 	</div>
 
