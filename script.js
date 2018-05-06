@@ -318,8 +318,8 @@ var myChart = new Chart(ctx, {
                 label: '月曜日',
                 data: [lastWeekArray[0], thisWeekArray[0]],
                 backgroundColor: [
-                    '#388646',
-                    '#388646'
+                    'RGBA(56,134,70, 0.7)',
+                    'RGBA(56,134,70, 0.7)'
                 ],
                 borderColor: [
                     '#388646',
@@ -331,8 +331,8 @@ var myChart = new Chart(ctx, {
                 label: '火曜日',
                 data: [lastWeekArray[1], thisWeekArray[1]],
                 backgroundColor: [
-                    '#439553',
-                    '#439553'
+                    'RGBA(67, 149, 83, 0.7)',
+                    'RGBA(67, 149, 83, 0.7)'
                 ],
                 borderColor: [
                     '#439553',
@@ -344,8 +344,8 @@ var myChart = new Chart(ctx, {
                 label: '水曜日',
                 data: [lastWeekArray[2], thisWeekArray[2]],
                 backgroundColor: [
-                    '#7ba555',
-                    '#7ba555'
+                    'RGBA(123, 165, 85, 0.7)',
+                    'RGBA(123, 165, 85, 0.7)'
                 ],
                 borderColor: [
                     '#7ba555',
@@ -357,8 +357,8 @@ var myChart = new Chart(ctx, {
                 label: '木曜日',
                 data: [lastWeekArray[3], thisWeekArray[3]],
                 backgroundColor: [
-                    '#b6a94f',
-                    '#b6a94f'
+                    'RGBA(182, 169, 79, 0.7)',
+                    'RGBA(182, 169, 79, 0.7)'
                 ],
                 borderColor: [
                     '#b6a94f',
@@ -370,8 +370,8 @@ var myChart = new Chart(ctx, {
                 label: '金曜日',
                 data: [lastWeekArray[4], thisWeekArray[4]],
                 backgroundColor: [
-                    '#bbb84a',
-                    '#bbb84a'
+                    'RGBA(187, 184, 74, 0.7)',
+                    'RGBA(187, 184, 74, 0.7)'
                 ],
                 borderColor: [
                     '#bbb84a',
@@ -383,8 +383,8 @@ var myChart = new Chart(ctx, {
                 label: '土曜日',
                 data: [lastWeekArray[5], thisWeekArray[5]],
                 backgroundColor: [
-                    '#cccd50',
-                    '#cccd50'
+                    'RGBA(204, 205, 80, 0.7)',
+                    'RGBA(204, 205, 80, 0.7)'
                 ],
                 borderColor: [
                     '#cccd50',
@@ -396,8 +396,8 @@ var myChart = new Chart(ctx, {
                 label: '日曜日',
                 data: [lastWeekArray[6], thisWeekArray[6]],
                 backgroundColor: [
-                    '#FFE760',
-                    '#FFE760'
+                    'RGBA(255, 231, 96, 0.7)',
+                    'RGBA(255, 231, 96, 0.7)'
                 ],
                 borderColor: [
                     '#FFE760',
