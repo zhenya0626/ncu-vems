@@ -561,7 +561,7 @@ var chart_A203 = new Chart(ctx3, {
 
 // swiper
 var mySwiper = new Swiper ('.swiper-container', {
-    loop: true,
+    loop: false,
     slidesPerView: 1,
     spaceBetween: 10,
     centeredSlides : true,
@@ -575,7 +575,8 @@ var mySwiper = new Swiper ('.swiper-container', {
       }
     },
     effect: 'coverflow',
-    onSlideChangeEnd : (s) => {s.fixLoop();}
+    preventClicks: false, 
+    preventClicksPropagation: false, 
   })
 
 $(function(){
