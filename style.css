@@ -229,8 +229,10 @@ img{
     margin-left: 15px;
 }
 
+
+
 @media screen and (max-width: 1083px) {
-    /* スマホ用のスタイル */
+    /* タブレット・iPhone Pulus用のスタイル */
     header{
         height:75px;
     }
@@ -238,8 +240,8 @@ img{
         margin: 10px auto;
         box-shadow: 4px 4px 4px rgba(0,0,0,0.2);
         border-radius: 3px 3px 3px 3px;
-        height: 480px;
-        width: 348px;
+        height: 500px;
+        width: 372px;
         float: unset;
     }
     #factry .room div {
@@ -247,6 +249,20 @@ img{
     }
     #A202 .room div.A202_2 {
         width: 66.5%;
+    }
+}
+
+@media screen and (max-width: 400px){
+    /* スマホとか用のスタイル */
+    header{
+        font-size: 15px;
+        text-align: center;
+    line-height: 36px;
+        padding: 0px;
+        height:36px;
+    }
+    .section{
+        width:95%;
     }
 }
 

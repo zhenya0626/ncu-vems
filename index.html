@@ -7,6 +7,8 @@
 	<link rel="stylesheet" href="style.css">
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117855791-1"></script>
+	<!-- swiper -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.min.css">
 	<script>
 	  window.dataLayer = window.dataLayer || [];
 	  function gtag(){dataLayer.push(arguments);}
@@ -43,40 +45,57 @@
 				</div>
 			</div>
 		</div>
-		<div class="section" id ="factry">
+		<div class="section" id="factry">
 			<div class="section_title">工場</div>
 			<div class="section_contents content_now">
-				<button class="change_mode">グラフ</button>
-				<div class="w w_factry">現在の電力消費量</div>
-				<div class="room">
-					<p class="enter">入り口</p>
-					<div class="F1 CH4"><img src="light.png">④</div>
-					<div class="F4 CH7"><img src="light.png">⑦</div>
-					<div class="F7 CH10"><img src="light.png">⑩</div>
-					<div class="F10 CH13"><img src="light.png">⑬</div>
-					<div class="F2 CH5"><img src="light.png">⑤</div>
-					<div class="F5 CH8"><img src="light.png">⑧</div>
-					<div class="F8 CH11"><img src="light.png">⑪</div>
-					<div class="F11 CH14"><img src="light.png">⑭</div>
-					<div class="F3 CH6"><img src="light.png">⑥</div>
-					<div class="F6 CH9"><img src="light.png">⑨</div>
-					<div class="F9 CH12"><img src="light.png">⑫</div>
-					<div class="F12 CH15"><img src="light.png">⑮</div>
-					<div id="server_room">サーバールーム</div>
-				</div>
-				<div class="legend">
-					<div class="on">on</div>
-					<div class="off">off</div>
-				</div>
-				
-			</div>
-			<div class="section_contents content_chart display_none">
-				<button class="change_mode">戻る</button>
-				<div class="scroll_wrapper">
-					<div style="width:1000px;">
-						<canvas id="chart_factry" style="width: 1000px; height: 430px;"></canvas>
+				<!-- Slider main container -->
+				<div class="swiper-container" style="height:100%;">
+				<!-- Additional required wrapper -->
+					<div class="swiper-wrapper" style="width: 100%;">
+						<!-- Slides -->
+						<div class="swiper-slide">
+							<div class="w w_factry">現在の電力消費量</div>
+							<div class="room">
+								<p class="enter">入り口</p>
+								<div class="F1 CH4"><img src="light.png">④</div>
+								<div class="F4 CH7"><img src="light.png">⑦</div>
+								<div class="F7 CH10"><img src="light.png">⑩</div>
+								<div class="F10 CH13"><img src="light.png">⑬</div>
+								<div class="F2 CH5"><img src="light.png">⑤</div>
+								<div class="F5 CH8"><img src="light.png">⑧</div>
+								<div class="F8 CH11"><img src="light.png">⑪</div>
+								<div class="F11 CH14"><img src="light.png">⑭</div>
+								<div class="F3 CH6"><img src="light.png">⑥</div>
+								<div class="F6 CH9"><img src="light.png">⑨</div>
+								<div class="F9 CH12"><img src="light.png">⑫</div>
+								<div class="F12 CH15"><img src="light.png">⑮</div>
+								<div id="server_room">サーバールーム</div>
+							</div>
+							<div class="legend">
+								<div class="on">on</div>
+								<div class="off">off</div>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="scroll_wrapper">
+								<div style="width:1000px;">
+									<canvas id="chart_factry" style="width: 1000px; height: 430px;"></canvas>
+								</div>
+							</div>	
+						</div>
+						<div class="swiper-slide">
+							<div class="container" style="width:100%">
+								<canvas id="chart_factry2"></canvas>
+							</div>
+						</div>
 					</div>
-				</div>		
+				<!-- If we need pagination -->
+					<div class="swiper-pagination"></div>
+
+					<!-- If we need navigation buttons -->
+					<!-- <div class="swiper-button-prev" style="width:20px; height: 20px; background-size: auto;"></div>
+					<div class="swiper-button-next" style="width:20px; height: 20px; background-size: auto;"></div> -->
+				</div>
 			</div>
 		</div>
 		<div class="section" id="A203">
@@ -94,7 +113,7 @@
 					<div class="off">off</div>
 				</div>
 			</div>
-			<div class="section_contents content_chart display_none">
+			<div class="section_contents content_chart_history display_none">
 				<button class="change_mode">戻る</button>
 				<div class="scroll_wrapper">
 					<div style="width:1000px;">
@@ -120,7 +139,7 @@
 					<div class="off">off</div>
 				</div>
 			</div>
-			<div class="section_contents content_chart display_none">
+			<div class="section_contents content_chart_history display_none">
 					<button class="change_mode">戻る</button>
 					<div class="scroll_wrapper">
 						<div style="width:1000px;">
@@ -130,7 +149,7 @@
 				</div>
 		</div>
 	</div>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js"></script>
 </body>
 <footer>produced by Riana Uchima</footer>
 <script src="script.js"></script>
