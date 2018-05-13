@@ -431,34 +431,16 @@ var myChart = new Chart(ctx, {
 
 
 
-
+// for 折れ線グラフ--------------------------------
 let timeLabelArraytmp = trend_p1_year.map(function (value, index) {
 
-
-
-    let year = '';
-    let mon = '';
-    let day = '';
-    
-    // if(index == 0){
-        year = trend_p1_year[index]+"/";
-        mon = trend_p1_mon[index]+"/";
-        day = trend_p1_day[index]+"/";
-    // }
-    // if(trend_p1_year[index]!==trend_p1_year[index-1]){
-    //     year = trend_p1_year[index]+"/";
-    // }
-    // if(trend_p1_mon[index]!==trend_p1_mon[index-1]){
-    //     mon = trend_p1_mon[index]+"/";
-    // }
-    // if(trend_p1_day[index]!==trend_p1_day[index-1]){
-    //     day = trend_p1_day[index]+"/";
-    // }
-
+    let year = trend_p1_year[index];
+    let mon = trend_p1_mon[index];
+    let day = trend_p1_day[index];
     let hour = trend_p1_hour[index];
-
-    return `${year}${mon}${day}${hour}時`;
+    return `${year}/${mon}/${day} ${hour}時`;
 })
+
 
 // 表示する時間数
 let chart_hour_length = 24 * 0 * 0 + trend_p1_hour[trend_p1_hour.length - 1] + 1;
@@ -466,6 +448,41 @@ let index_for_slice = timeLabelArraytmp.length - chart_hour_length;
 
 let timeLabelArray = timeLabelArraytmp.slice(index_for_slice);
 let trend_factry_yen_chart = trend_factry_yen.slice(index_for_slice);
+
+
+
+// for 棒グラフ----------------------------------------
+let timeLabelArraytmp_bar = trend_p1_year.map(function (value, index) {
+    let hour = trend_p1_hour[index];
+    return `${hour}時`;
+})
+
+// 今日
+// 表示する時間数今日
+let chart_hour_length_bar_today = trend_p1_hour[trend_p1_hour.length - 1] + 1;
+// 今日の０時のindex
+let index_for_slice_bar_today = timeLabelArraytmp_bar.length - chart_hour_length_bar_today;
+//今日のデータの配列
+let trend_factry_yen_chart_bar_today = trend_factry_yen.slice(index_for_slice_bar_today);
+// 今日の日付
+let trend_factry_yen_chart_bar_date_today = `${trend_p1_year[index_for_slice_bar_today]}/${trend_p1_mon[index_for_slice_bar_today]}/${trend_p1_day[index_for_slice_bar_today]}`;
+
+// 先週の今日
+// 表示する時間数先週
+let chart_hour_length_bar_lastweek = 24 * 7 +  trend_p1_hour[trend_p1_hour.length - 1] + 1;
+// 先週の今日の０時のindex
+let index_for_slice_bar_lastweek = timeLabelArraytmp_bar.length - chart_hour_length_bar_lastweek;
+//先週の今日データの配列
+let trend_factry_yen_chart_bar_lastweek = trend_factry_yen.slice(index_for_slice_bar_lastweek, index_for_slice_bar_lastweek + 24);
+// 先週の今日の日付
+let trend_factry_yen_chart_bar_date_lastweek = `${trend_p1_year[index_for_slice_bar_lastweek]}/${trend_p1_mon[index_for_slice_bar_lastweek]}/${trend_p1_day[index_for_slice_bar_lastweek]}`;
+
+
+
+
+// ラベルの配列
+let timeLabelArray_bar = timeLabelArraytmp_bar.slice(index_for_slice_bar_lastweek, index_for_slice_bar_lastweek + 24);
+
 
 
 // 工場
@@ -509,29 +526,17 @@ var chart_factry = new Chart(ctx1, {
 
 
 var barChartData = {
-    labels: ['8/26','8/27','8/28','8/29','8/30','8/31','9/1',
-        '9/2','9/3','9/4','9/5','9/6','9/7','9/8',
-        '9/9','9/10','9/11','9/12','9/13','9/14',
-        '9/15','9/16','9/17','9/18','9/19','9/20','9/21','9/22'
-    ],
+    labels: timeLabelArray_bar,
     datasets: [
     {
-        label: 'sample-line',
-        data: ['0.155','0.118','0.121','0.068','0.083','0.060','0.067',
-            '0.121','0.121','0.150','0.118','0.097','0.078','0.127',
-            '0.155','0.140','0.101','0.140','0.041','0.093','0.189',
-            '0.146','0.134','0.127','0.116','0.111','0.125','0.116'
-        ],
+        label: trend_factry_yen_chart_bar_date_lastweek,
+        data: trend_factry_yen_chart_bar_lastweek,
         borderColor : "rgba(254,97,132,0.8)",
         backgroundColor : "rgba(254,97,132,0.5)",
     },
     {
-        label: 'sample-bar',
-        data: ['0.3','0.1','0.1','0.3','0.4','0.2','0.0',
-            '0.2','0.3','0.11','0.5','0.2','0.5','0.4',
-            '0.0','0.3','0.7','0.3','0.6','0.4','0.9',
-            '0.7','0.4','0.8','0.7','0.4','0.7','0.8'
-        ],
+        label: trend_factry_yen_chart_bar_date_today+'(今日)',
+        data: trend_factry_yen_chart_bar_today,
         borderColor : "rgba(54,164,235,0.8)",
         backgroundColor : "rgba(54,164,235,0.5)",
     },
