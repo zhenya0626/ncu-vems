@@ -234,10 +234,6 @@ function wToYen(wArray) {
 }
 
 
-
-
-
-
 function getDaynum(num) {
     var Daynum = 0;
     if (num == 0) {
@@ -419,21 +415,30 @@ var myChart = new Chart(ctx, {
 });
 
 
+// （引数）日前の日の0時のindexを返す関数 0日だと今日の0時
+function indexofDataZero(num){
+    let index = 0;
+    let hour_length = 24 * num + trend_p1_hour[trend_p1_hour.length - 1] + 1;
+    index = trend_p1_hour.length - hour_length;
+    return index;
+}
 
-
-
-
-
-
-
-
-
-
+// ここ呼ぶ [(start)日前0時] から [(end)日前0時 or 現在]　のデータを取得
+function getDataArray(data, start){
+    const startDayIndex = indexofDataZero(start);
+    const slicedArray = data.slice(startDayIndex);
+    return slicedArray;
+}
+function getDataArray2(data, start, end){
+    const startDayIndex = indexofDataZero(start);
+    const endDayIndex = indexofDataZero(end);
+    const slicedArray = data.slice(startDayIndex, endDayIndex);
+    return slicedArray;
+}
 
 
 // for 折れ線グラフ--------------------------------
 let timeLabelArraytmp = trend_p1_year.map(function (value, index) {
-
     let year = trend_p1_year[index];
     let mon = trend_p1_mon[index];
     let day = trend_p1_day[index];
@@ -441,15 +446,12 @@ let timeLabelArraytmp = trend_p1_year.map(function (value, index) {
     return `${year}/${mon}/${day} ${hour}時`;
 })
 
+let numofDays = 7; 
 
-// 表示する時間数
-let chart_hour_length = 24 * 0 * 0 + trend_p1_hour[trend_p1_hour.length - 1] + 1;
-let index_for_slice = timeLabelArraytmp.length - chart_hour_length;
-
-let timeLabelArray = timeLabelArraytmp.slice(index_for_slice);
-let trend_factry_yen_chart = trend_factry_yen.slice(index_for_slice);
-let trend_A202_yen_chart = trend_A202_yen.slice(index_for_slice);
-let trend_A203_yen_chart = trend_A203_yen.slice(index_for_slice);
+let timeLabelArray = getDataArray(timeLabelArraytmp,numofDays);
+let trend_factry_yen_chart = getDataArray(trend_factry_yen,numofDays);
+let trend_A202_yen_chart = getDataArray(trend_A202_yen,numofDays);
+let trend_A203_yen_chart = getDataArray(trend_A203_yen,numofDays);
 
 
 // for 棒グラフ----------------------------------------
@@ -458,34 +460,23 @@ let timeLabelArraytmp_bar = trend_p1_year.map(function (value, index) {
     return `${hour}時`;
 })
 
-// 今日
-// 表示する時間数今日
-let chart_hour_length_bar_today = trend_p1_hour[trend_p1_hour.length - 1] + 1;
-// 今日の０時のindex
-let index_for_slice_bar_today = timeLabelArraytmp_bar.length - chart_hour_length_bar_today;
-//今日のデータの配列
-let trend_factry_yen_chart_bar_today = trend_factry_yen.slice(index_for_slice_bar_today);
-let trend_A202_yen_chart_bar_today = trend_A202_yen.slice(index_for_slice_bar_today);
-let trend_A203_yen_chart_bar_today = trend_A203_yen.slice(index_for_slice_bar_today);
 // 今日の日付
-let trend_yen_chart_bar_date_today = `${trend_p1_mon[index_for_slice_bar_today]}/${trend_p1_day[index_for_slice_bar_today]}`;
-
-// 先週の今日
-// 表示する時間数先週
-let chart_hour_length_bar_lastweek = 24 * 7 +  trend_p1_hour[trend_p1_hour.length - 1] + 1;
-// 先週の今日の０時のindex
-let index_for_slice_bar_lastweek = timeLabelArraytmp_bar.length - chart_hour_length_bar_lastweek;
-//先週の今日データの配列
-let trend_factry_yen_chart_bar_lastweek = trend_factry_yen.slice(index_for_slice_bar_lastweek, index_for_slice_bar_lastweek + 24);
-let trend_A202_yen_chart_bar_lastweek = trend_A202_yen.slice(index_for_slice_bar_lastweek, index_for_slice_bar_lastweek + 24);
-let trend_A203_yen_chart_bar_lastweek = trend_A203_yen.slice(index_for_slice_bar_lastweek, index_for_slice_bar_lastweek + 24);
+let trend_yen_chart_bar_date_today = `${trend_p1_mon[indexofDataZero(0)]}/${trend_p1_day[indexofDataZero(0)]}`;
 // 先週の今日の日付
-let trend_yen_chart_bar_date_lastweek = `${trend_p1_mon[index_for_slice_bar_lastweek]}/${trend_p1_day[index_for_slice_bar_lastweek]}`;
-
+let trend_yen_chart_bar_date_lastweek = `${trend_p1_mon[indexofDataZero(7)]}/${trend_p1_day[indexofDataZero(7)]}`;
 
 // ラベルの配列
-let timeLabelArray_bar = timeLabelArraytmp_bar.slice(index_for_slice_bar_lastweek, index_for_slice_bar_lastweek + 24);
+let timeLabelArray_bar = getDataArray2(timeLabelArraytmp_bar, 7, 6);
 
+//今日のデータの配列
+let trend_factry_yen_chart_bar_today = getDataArray(trend_factry_yen, 0);
+let trend_A202_yen_chart_bar_today = getDataArray(trend_A202_yen, 0);
+let trend_A203_yen_chart_bar_today = getDataArray(trend_A203_yen, 0);
+
+//先週の今日データの配列
+let trend_factry_yen_chart_bar_lastweek = getDataArray2(trend_factry_yen, 7, 6);
+let trend_A202_yen_chart_bar_lastweek = getDataArray2(trend_A202_yen, 7, 6);
+let trend_A203_yen_chart_bar_lastweek = getDataArray2(trend_A203_yen, 7, 6);
 
 
 // 工場
