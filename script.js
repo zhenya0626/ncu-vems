@@ -450,7 +450,6 @@ let timeLabelArray = timeLabelArraytmp.slice(index_for_slice);
 let trend_factry_yen_chart = trend_factry_yen.slice(index_for_slice);
 
 
-
 // for 棒グラフ----------------------------------------
 let timeLabelArraytmp_bar = trend_p1_year.map(function (value, index) {
     let hour = trend_p1_hour[index];
