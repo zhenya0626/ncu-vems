@@ -465,7 +465,7 @@ let index_for_slice_bar_today = timeLabelArraytmp_bar.length - chart_hour_length
 //今日のデータの配列
 let trend_factry_yen_chart_bar_today = trend_factry_yen.slice(index_for_slice_bar_today);
 // 今日の日付
-let trend_factry_yen_chart_bar_date_today = `${trend_p1_year[index_for_slice_bar_today]}/${trend_p1_mon[index_for_slice_bar_today]}/${trend_p1_day[index_for_slice_bar_today]}`;
+let trend_factry_yen_chart_bar_date_today = `${trend_p1_mon[index_for_slice_bar_today]}/${trend_p1_day[index_for_slice_bar_today]}`;
 
 // 先週の今日
 // 表示する時間数先週
@@ -475,7 +475,7 @@ let index_for_slice_bar_lastweek = timeLabelArraytmp_bar.length - chart_hour_len
 //先週の今日データの配列
 let trend_factry_yen_chart_bar_lastweek = trend_factry_yen.slice(index_for_slice_bar_lastweek, index_for_slice_bar_lastweek + 24);
 // 先週の今日の日付
-let trend_factry_yen_chart_bar_date_lastweek = `${trend_p1_year[index_for_slice_bar_lastweek]}/${trend_p1_mon[index_for_slice_bar_lastweek]}/${trend_p1_day[index_for_slice_bar_lastweek]}`;
+let trend_factry_yen_chart_bar_date_lastweek = `${trend_p1_mon[index_for_slice_bar_lastweek]}/${trend_p1_day[index_for_slice_bar_lastweek]}`;
 
 
 
@@ -499,12 +499,6 @@ var chart_factry = new Chart(ctx1, {
             borderColor: 'RGBA(56,134,70, 1)',
             borderWidth: 1,
             pointRadius: 2,
-            // }, {
-            // 	label: 'green',
-            // 	data: [10, 14, 6, 8, 1, 4],
-            // 	backgroundColor: 'RGBA(77,169,155, 0.4)',
-            // 	borderColor: 'RGBA(77,169,155, 1)',
-            // 	borderWidth: 1
         }]
     },
     options: { // チャートのその他オプション
@@ -512,7 +506,7 @@ var chart_factry = new Chart(ctx1, {
             yAxes: [{
                 ticks: {
                     beginAtZero: true,
-                }
+                },
             }],
             xAxes: [{
                 ticks: {
@@ -529,18 +523,18 @@ var barChartData = {
     labels: timeLabelArray_bar,
     datasets: [
     {
-        label: trend_factry_yen_chart_bar_date_lastweek,
+        label: '先週: ' + trend_factry_yen_chart_bar_date_lastweek + 'の電気料金 (円)',
         data: trend_factry_yen_chart_bar_lastweek,
         borderColor : "rgba(254,97,132,0.8)",
         backgroundColor : "rgba(254,97,132,0.5)",
     },
     {
-        label: trend_factry_yen_chart_bar_date_today+'(今日)',
+        label: '今日: ' + trend_factry_yen_chart_bar_date_today + 'の電気料金 (円)',
         data: trend_factry_yen_chart_bar_today,
         borderColor : "rgba(54,164,235,0.8)",
         backgroundColor : "rgba(54,164,235,0.5)",
     },
-    ],
+    ]
 };
 var complexChartOption = {
     responsive: true,
@@ -621,36 +615,3 @@ var mySwiper = new Swiper ('.swiper-container', {
     preventClicks: false, 
     preventClicksPropagation: false, 
   })
-
-$(function(){
-    // // アコーディオン
-    // $(".accordion p").click(function(){
-    //     $(this).next("ul").slideToggle();
-    //     $(this).children("span").toggleClass("open");
-    // }); 
-     
-
-
-
-    // $('#factry .change_mode')
-    //     .on('click', function(){
-    //         $('#factry .content_now').addClass('display_none');
-    //         $('#factry .content_chart_history').addClass('display_none');
-    //         $('#factry .content_chart_compare').addClass('display_none');
-    //         // $(this).parent.removeClass('display_none');        
-    //     });
-    // $('#A202 .change_mode')
-    //     .on('click', function(){
-    //         $('#A202 .content_now').addClass('display_none');
-    //         $('#A202 .content_chart_history').addClass('display_none');
-    //         $('#A202 .content_chart_compare').addClass('display_none');
-    //         // $(this).parent.removeClass('display_none');        
-    //     });
-    // $('#A203 .change_mode')
-    //     .on('click', function(){
-    //         $('#A203 .content_now').addClass('display_none');
-    //         $('#A203 .content_chart_history').addClass('display_none');
-    //         $('#A203 .content_chart_compare').addClass('display_none');
-    //         // $(this).parent.removeClass('display_none');   
-    //     });
-});
