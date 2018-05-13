@@ -432,23 +432,56 @@ var myChart = new Chart(ctx, {
 
 
 
-let timeLabelArray = trend_p1_year.map(function (value, index) {
-    return `${trend_p1_year[index]}年${trend_p1_mon[index]}月${trend_p1_day[index]}日${trend_p1_hour[index]}時`;
+let timeLabelArraytmp = trend_p1_year.map(function (value, index) {
+
+
+
+    let year = '';
+    let mon = '';
+    let day = '';
+    
+    // if(index == 0){
+        year = trend_p1_year[index]+"/";
+        mon = trend_p1_mon[index]+"/";
+        day = trend_p1_day[index]+"/";
+    // }
+    // if(trend_p1_year[index]!==trend_p1_year[index-1]){
+    //     year = trend_p1_year[index]+"/";
+    // }
+    // if(trend_p1_mon[index]!==trend_p1_mon[index-1]){
+    //     mon = trend_p1_mon[index]+"/";
+    // }
+    // if(trend_p1_day[index]!==trend_p1_day[index-1]){
+    //     day = trend_p1_day[index]+"/";
+    // }
+
+    let hour = trend_p1_hour[index];
+
+    return `${year}${mon}${day}${hour}時`;
 })
+
+// 表示する時間数
+let chart_hour_length = 24 * 0 * 0 + trend_p1_hour[trend_p1_hour.length - 1] + 1;
+let index_for_slice = timeLabelArraytmp.length - chart_hour_length;
+
+let timeLabelArray = timeLabelArraytmp.slice(index_for_slice);
+let trend_factry_yen_chart = trend_factry_yen.slice(index_for_slice);
+
 
 // 工場
 var ctx1 = document.getElementById("chart_factry");
 var chart_factry = new Chart(ctx1, {
     type: 'line', // チャートのタイプ
     data: { // チャートの内容
-        labels: timeLabelArray.slice(500),
+        labels: timeLabelArray,
         datasets: [{
             label: '工場 電気料金（円）',
             lineTension: 0, // ベジェ曲線を無効化
-            data: trend_factry_yen.slice(500),
+            data: trend_factry_yen_chart,
             backgroundColor: 'RGBA(56,134,70, 0.4)',
             borderColor: 'RGBA(56,134,70, 1)',
-            borderWidth: 1
+            borderWidth: 1,
+            pointRadius: 2,
             // }, {
             // 	label: 'green',
             // 	data: [10, 14, 6, 8, 1, 4],
@@ -461,7 +494,12 @@ var chart_factry = new Chart(ctx1, {
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                }
+            }],
+            xAxes: [{
+                ticks: {
+                    stepSize: 12,
                 }
             }]
         }
@@ -513,7 +551,7 @@ var ctx2 = document.getElementById("chart_A202");
 var chart_A202 = new Chart(ctx2, {
     type: 'line', // チャートのタイプ
     data: { // チャートの内容
-        labels: timeLabelArray.slice(500),
+        labels: timeLabelArray,
         datasets: [{
             label: 'A202 電気料金（円）',
             lineTension: 0, // ベジェ曲線を無効化
@@ -538,7 +576,7 @@ var ctx3 = document.getElementById("chart_A203");
 var chart_A203 = new Chart(ctx3, {
     type: 'line', // チャートのタイプ
     data: { // チャートの内容
-        labels: timeLabelArray.slice(500),
+        labels: timeLabelArray,
         datasets: [{
             label: 'A203 電気料金（円）',
             lineTension: 0, // ベジェ曲線を無効化
@@ -580,34 +618,34 @@ var mySwiper = new Swiper ('.swiper-container', {
   })
 
 $(function(){
-    // アコーディオン
-    $(".accordion p").click(function(){
-        $(this).next("ul").slideToggle();
-        $(this).children("span").toggleClass("open");
-    }); 
+    // // アコーディオン
+    // $(".accordion p").click(function(){
+    //     $(this).next("ul").slideToggle();
+    //     $(this).children("span").toggleClass("open");
+    // }); 
      
 
 
 
-    $('#factry .change_mode')
-        .on('click', function(){
-            $('#factry .content_now').addClass('display_none');
-            $('#factry .content_chart_history').addClass('display_none');
-            $('#factry .content_chart_compare').addClass('display_none');
-            // $(this).parent.removeClass('display_none');        
-        });
-    $('#A202 .change_mode')
-        .on('click', function(){
-            $('#A202 .content_now').addClass('display_none');
-            $('#A202 .content_chart_history').addClass('display_none');
-            $('#A202 .content_chart_compare').addClass('display_none');
-            // $(this).parent.removeClass('display_none');        
-        });
-    $('#A203 .change_mode')
-        .on('click', function(){
-            $('#A203 .content_now').addClass('display_none');
-            $('#A203 .content_chart_history').addClass('display_none');
-            $('#A203 .content_chart_compare').addClass('display_none');
-            // $(this).parent.removeClass('display_none');   
-        });
+    // $('#factry .change_mode')
+    //     .on('click', function(){
+    //         $('#factry .content_now').addClass('display_none');
+    //         $('#factry .content_chart_history').addClass('display_none');
+    //         $('#factry .content_chart_compare').addClass('display_none');
+    //         // $(this).parent.removeClass('display_none');        
+    //     });
+    // $('#A202 .change_mode')
+    //     .on('click', function(){
+    //         $('#A202 .content_now').addClass('display_none');
+    //         $('#A202 .content_chart_history').addClass('display_none');
+    //         $('#A202 .content_chart_compare').addClass('display_none');
+    //         // $(this).parent.removeClass('display_none');        
+    //     });
+    // $('#A203 .change_mode')
+    //     .on('click', function(){
+    //         $('#A203 .content_now').addClass('display_none');
+    //         $('#A203 .content_chart_history').addClass('display_none');
+    //         $('#A203 .content_chart_compare').addClass('display_none');
+    //         // $(this).parent.removeClass('display_none');   
+    //     });
 });
