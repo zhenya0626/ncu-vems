@@ -600,6 +600,7 @@ var mySwiper = new Swiper ('.swiper-container', {
     spaceBetween: 10,
     centeredSlides : true,
     pagination: '.swiper-pagination',
+    paginationClickable: true,
     nextButton: '.swiper-button-next',
     prevButton: '.swiper-button-prev',
     breakpoints: {
@@ -609,6 +610,16 @@ var mySwiper = new Swiper ('.swiper-container', {
       }
     },
     effect: 'coverflow',
-    preventClicks: false, 
-    preventClicksPropagation: false, 
+
   })
+//   var swiper = new Swiper('.swiper-container1', {
+//     direction: 'vertical',
+//     slidesPerView: 'auto',
+//     freeMode: true,
+//     scrollbar: {
+//       el: '.swiper-scrollbar',
+//     },
+//     mousewheel: true,
+//     nested: true
+//   });
+
