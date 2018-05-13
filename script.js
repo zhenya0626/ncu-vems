@@ -594,7 +594,7 @@ var chart_A203 = new Chart(ctx3, {
 });
 
 // swiper
-var mySwiper = new Swiper ('.swiper-container', {
+var mySwiper = new Swiper ('.swiper-container-h', {
     loop: false,
     slidesPerView: 1,
     spaceBetween: 10,
@@ -610,16 +610,16 @@ var mySwiper = new Swiper ('.swiper-container', {
       }
     },
     effect: 'coverflow',
-
+    preventClicks: false, 
+    preventClicksPropagation: false, 
+    preventLinks: false,
   })
-//   var swiper = new Swiper('.swiper-container1', {
-//     direction: 'vertical',
-//     slidesPerView: 'auto',
-//     freeMode: true,
-//     scrollbar: {
-//       el: '.swiper-scrollbar',
-//     },
-//     mousewheel: true,
-//     nested: true
-//   });
 
+  var swiper = new Swiper('.swiper-container-target', {
+    scrollbar: '.swiper-scrollbar-target',
+    // direction: 'vertical',
+    slidesPerView: 'auto',
+    mousewheelControl: true,
+    freeMode: true,
+    nested: true
+});
