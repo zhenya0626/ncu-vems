@@ -477,8 +477,6 @@ let trend_factry_yen_chart_bar_lastweek = trend_factry_yen.slice(index_for_slice
 let trend_factry_yen_chart_bar_date_lastweek = `${trend_p1_mon[index_for_slice_bar_lastweek]}/${trend_p1_day[index_for_slice_bar_lastweek]}`;
 
 
-
-
 // ラベルの配列
 let timeLabelArray_bar = timeLabelArraytmp_bar.slice(index_for_slice_bar_lastweek, index_for_slice_bar_lastweek + 24);
 
