@@ -448,6 +448,8 @@ let index_for_slice = timeLabelArraytmp.length - chart_hour_length;
 
 let timeLabelArray = timeLabelArraytmp.slice(index_for_slice);
 let trend_factry_yen_chart = trend_factry_yen.slice(index_for_slice);
+let trend_A202_yen_chart = trend_A202_yen.slice(index_for_slice);
+let trend_A203_yen_chart = trend_A203_yen.slice(index_for_slice);
 
 
 // for 棒グラフ----------------------------------------
@@ -463,8 +465,10 @@ let chart_hour_length_bar_today = trend_p1_hour[trend_p1_hour.length - 1] + 1;
 let index_for_slice_bar_today = timeLabelArraytmp_bar.length - chart_hour_length_bar_today;
 //今日のデータの配列
 let trend_factry_yen_chart_bar_today = trend_factry_yen.slice(index_for_slice_bar_today);
+let trend_A202_yen_chart_bar_today = trend_A202_yen.slice(index_for_slice_bar_today);
+let trend_A203_yen_chart_bar_today = trend_A203_yen.slice(index_for_slice_bar_today);
 // 今日の日付
-let trend_factry_yen_chart_bar_date_today = `${trend_p1_mon[index_for_slice_bar_today]}/${trend_p1_day[index_for_slice_bar_today]}`;
+let trend_yen_chart_bar_date_today = `${trend_p1_mon[index_for_slice_bar_today]}/${trend_p1_day[index_for_slice_bar_today]}`;
 
 // 先週の今日
 // 表示する時間数先週
@@ -473,8 +477,10 @@ let chart_hour_length_bar_lastweek = 24 * 7 +  trend_p1_hour[trend_p1_hour.lengt
 let index_for_slice_bar_lastweek = timeLabelArraytmp_bar.length - chart_hour_length_bar_lastweek;
 //先週の今日データの配列
 let trend_factry_yen_chart_bar_lastweek = trend_factry_yen.slice(index_for_slice_bar_lastweek, index_for_slice_bar_lastweek + 24);
+let trend_A202_yen_chart_bar_lastweek = trend_A202_yen.slice(index_for_slice_bar_lastweek, index_for_slice_bar_lastweek + 24);
+let trend_A203_yen_chart_bar_lastweek = trend_A203_yen.slice(index_for_slice_bar_lastweek, index_for_slice_bar_lastweek + 24);
 // 先週の今日の日付
-let trend_factry_yen_chart_bar_date_lastweek = `${trend_p1_mon[index_for_slice_bar_lastweek]}/${trend_p1_day[index_for_slice_bar_lastweek]}`;
+let trend_yen_chart_bar_date_lastweek = `${trend_p1_mon[index_for_slice_bar_lastweek]}/${trend_p1_day[index_for_slice_bar_lastweek]}`;
 
 
 // ラベルの配列
@@ -516,17 +522,17 @@ var chart_factry = new Chart(ctx1, {
 
 
 
-var barChartData = {
+var barChartData_factry = {
     labels: timeLabelArray_bar,
     datasets: [
     {
-        label: '先週: ' + trend_factry_yen_chart_bar_date_lastweek + 'の電気料金 (円)',
+        label: '先週: ' + trend_yen_chart_bar_date_lastweek + 'の電気料金 (円)',
         data: trend_factry_yen_chart_bar_lastweek,
         borderColor : "rgba(254,97,132,0.8)",
         backgroundColor : "rgba(254,97,132,0.5)",
     },
     {
-        label: '今日: ' + trend_factry_yen_chart_bar_date_today + 'の電気料金 (円)',
+        label: '今日: ' + trend_yen_chart_bar_date_today + 'の電気料金 (円)',
         data: trend_factry_yen_chart_bar_today,
         borderColor : "rgba(54,164,235,0.8)",
         backgroundColor : "rgba(54,164,235,0.5)",
@@ -536,12 +542,14 @@ var barChartData = {
 var complexChartOption = {
     responsive: true,
 };
-ctx11 = document.getElementById("chart_factry2").getContext("2d");
+var ctx11 = document.getElementById("chart_factry2").getContext("2d");
 window.myBar = new Chart(ctx11, {
     type: 'bar', // ここは bar にする必要があります
-    data: barChartData,
+    data: barChartData_factry,
     options: complexChartOption
 });
+
+
 // A202
 var ctx2 = document.getElementById("chart_A202");
 var chart_A202 = new Chart(ctx2, {
@@ -567,6 +575,37 @@ var chart_A202 = new Chart(ctx2, {
         }
     }
 });
+
+
+var barChartData_A202 = {
+    labels: timeLabelArray_bar,
+    datasets: [
+    {
+        label: '先週: ' + trend_yen_chart_bar_date_lastweek + 'の電気料金 (円)',
+        data: trend_A202_yen_chart_bar_lastweek,
+        borderColor : "rgba(254,97,132,0.8)",
+        backgroundColor : "rgba(254,97,132,0.5)",
+    },
+    {
+        label: '今日: ' + trend_yen_chart_bar_date_today + 'の電気料金 (円)',
+        data: trend_A202_yen_chart_bar_today,
+        borderColor : "rgba(54,164,235,0.8)",
+        backgroundColor : "rgba(54,164,235,0.5)",
+    },
+    ]
+};
+var complexChartOption = {
+    responsive: true,
+};
+var ctx11 = document.getElementById("chart_A2022").getContext("2d");
+window.myBar = new Chart(ctx11, {
+    type: 'bar', // ここは bar にする必要があります
+    data: barChartData_A202,
+    options: complexChartOption
+});
+
+
+
 // A203
 var ctx3 = document.getElementById("chart_A203");
 var chart_A203 = new Chart(ctx3, {
@@ -592,6 +631,36 @@ var chart_A203 = new Chart(ctx3, {
         }
     }
 });
+
+var barChartData_A203 = {
+    labels: timeLabelArray_bar,
+    datasets: [
+    {
+        label: '先週: ' + trend_yen_chart_bar_date_lastweek + 'の電気料金 (円)',
+        data: trend_A203_yen_chart_bar_lastweek,
+        borderColor : "rgba(254,97,132,0.8)",
+        backgroundColor : "rgba(254,97,132,0.5)",
+    },
+    {
+        label: '今日: ' + trend_yen_chart_bar_date_today + 'の電気料金 (円)',
+        data: trend_A203_yen_chart_bar_today,
+        borderColor : "rgba(54,164,235,0.8)",
+        backgroundColor : "rgba(54,164,235,0.5)",
+    },
+    ]
+};
+var complexChartOption = {
+    responsive: true,
+};
+var ctx11 = document.getElementById("chart_A2032").getContext("2d");
+window.myBar = new Chart(ctx11, {
+    type: 'bar', // ここは bar にする必要があります
+    data: barChartData_A203,
+    options: complexChartOption
+});
+
+
+
 
 // swiper
 var mySwiper = new Swiper ('.swiper-container-h', {
