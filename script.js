@@ -423,7 +423,7 @@ function indexofDataZero(num){
     return index;
 }
 
-// ここ呼ぶ [(start)日前0時] から [(end)日前0時 or 現在]　のデータを取得
+//  [(start)日前0時] から [(end)日前0時 or 現在]　のデータを取得
 function getDataArray(data, start){
     const startDayIndex = indexofDataZero(start);
     const slicedArray = data.slice(startDayIndex);
@@ -452,6 +452,7 @@ let timeLabelArray = getDataArray(timeLabelArraytmp,numofDays);
 let trend_factry_yen_chart = getDataArray(trend_factry_yen,numofDays);
 let trend_A202_yen_chart = getDataArray(trend_A202_yen,numofDays);
 let trend_A203_yen_chart = getDataArray(trend_A203_yen,numofDays);
+//--------------------------------
 
 
 // for 棒グラフ----------------------------------------
@@ -477,6 +478,7 @@ let trend_A203_yen_chart_bar_today = getDataArray(trend_A203_yen, 0);
 let trend_factry_yen_chart_bar_lastweek = getDataArray2(trend_factry_yen, 7, 6);
 let trend_A202_yen_chart_bar_lastweek = getDataArray2(trend_A202_yen, 7, 6);
 let trend_A203_yen_chart_bar_lastweek = getDataArray2(trend_A203_yen, 7, 6);
+// ----------------------------------------
 
 
 // 工場
@@ -550,7 +552,7 @@ var chart_A202 = new Chart(ctx2, {
         datasets: [{
             label: 'A202 電気料金（円）',
             lineTension: 0, // ベジェ曲線を無効化
-            data: trend_A202_yen.slice(500),
+            data: trend_A202_yen_chart,
             backgroundColor: 'RGBA(56,134,70, 0.4)',
             borderColor: 'RGBA(56,134,70, 1)',
             borderWidth: 1
@@ -606,7 +608,7 @@ var chart_A203 = new Chart(ctx3, {
         datasets: [{
             label: 'A203 電気料金（円）',
             lineTension: 0, // ベジェ曲線を無効化
-            data: trend_A203_yen.slice(500),
+            data: trend_A203_yen_chart,
             backgroundColor: 'RGBA(56,134,70, 0.4)',
             borderColor: 'RGBA(56,134,70, 1)',
             borderWidth: 1
