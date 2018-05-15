@@ -519,14 +519,14 @@ var barChartData_factry = {
     labels: timeLabelArray_bar,
     datasets: [
     {
-        label: '先週: ' + trend_yen_chart_bar_date_lastweek + 'の電気料金 (円)',
-        data: trend_factry_yen_chart_bar_lastweek,
+        label: '先週: ' + trend_yen_chart_bar_date_lastweek.slice(0, -1) + 'の電気料金 (円)',
+        data: trend_factry_yen_chart_bar_lastweek.slice(0, -1),
         borderColor : "rgba(254,97,132,0.8)",
         backgroundColor : "rgba(254,97,132,0.5)",
     },
     {
-        label: '今日: ' + trend_yen_chart_bar_date_today + 'の電気料金 (円)',
-        data: trend_factry_yen_chart_bar_today,
+        label: '今日: ' + trend_yen_chart_bar_date_today.slice(0, -1) + 'の電気料金 (円)',
+        data: trend_factry_yen_chart_bar_today.slice(0, -1),
         borderColor : "rgba(54,164,235,0.8)",
         backgroundColor : "rgba(54,164,235,0.5)",
     },
@@ -575,14 +575,14 @@ var barChartData_A202 = {
     labels: timeLabelArray_bar,
     datasets: [
     {
-        label: '先週: ' + trend_yen_chart_bar_date_lastweek + 'の電気料金 (円)',
-        data: trend_A202_yen_chart_bar_lastweek,
+        label: '先週: ' + trend_yen_chart_bar_date_lastweek.slice(0, -1) + 'の電気料金 (円)',
+        data: trend_A202_yen_chart_bar_lastweek.slice(0, -1),
         borderColor : "rgba(254,97,132,0.8)",
         backgroundColor : "rgba(254,97,132,0.5)",
     },
     {
-        label: '今日: ' + trend_yen_chart_bar_date_today + 'の電気料金 (円)',
-        data: trend_A202_yen_chart_bar_today,
+        label: '今日: ' + trend_yen_chart_bar_date_today.slice(0, -1) + 'の電気料金 (円)',
+        data: trend_A202_yen_chart_bar_today.slice(0, -1),
         borderColor : "rgba(54,164,235,0.8)",
         backgroundColor : "rgba(54,164,235,0.5)",
     },
@@ -595,7 +595,19 @@ var ctx11 = document.getElementById("chart_A2022").getContext("2d");
 window.myBar = new Chart(ctx11, {
     type: 'bar', // ここは bar にする必要があります
     data: barChartData_A202,
-    options: complexChartOption
+    // options: complexChartOption,
+    options: {
+        complexChartOption,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    suggestedMax: 15,
+                    // min: 0,
+                    // stepSize: 10
+                }
+            }]
+        }
+    }
 });
 
 
@@ -631,14 +643,14 @@ var barChartData_A203 = {
     labels: timeLabelArray_bar,
     datasets: [
     {
-        label: '先週: ' + trend_yen_chart_bar_date_lastweek + 'の電気料金 (円)',
-        data: trend_A203_yen_chart_bar_lastweek,
+        label: '先週: ' + trend_yen_chart_bar_date_lastweek.slice(0, -1) + 'の電気料金 (円)',
+        data: trend_A203_yen_chart_bar_lastweek.slice(0, -1),
         borderColor : "rgba(254,97,132,0.8)",
         backgroundColor : "rgba(254,97,132,0.5)",
     },
     {
-        label: '今日: ' + trend_yen_chart_bar_date_today + 'の電気料金 (円)',
-        data: trend_A203_yen_chart_bar_today,
+        label: '今日: ' + trend_yen_chart_bar_date_today.slice(0, -1) + 'の電気料金 (円)',
+        data: trend_A203_yen_chart_bar_today.slice(0, -1),
         borderColor : "rgba(54,164,235,0.8)",
         backgroundColor : "rgba(54,164,235,0.5)",
     },
@@ -651,7 +663,7 @@ var ctx11 = document.getElementById("chart_A2032").getContext("2d");
 window.myBar = new Chart(ctx11, {
     type: 'bar', // ここは bar にする必要があります
     data: barChartData_A203,
-    options: complexChartOption
+    options: complexChartOption,
 });
 
 

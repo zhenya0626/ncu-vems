@@ -33,8 +33,7 @@ footer{
     border-radius: 3px 3px 3px 3px;
     height: 600px;
     width:435px;
-    min-width: 348px;
-
+    /* min-width: 348px; */
 }
 .section_title{
     background-color: #388646;
@@ -53,8 +52,8 @@ footer{
 .room{
     position: absolute;
     top: 15%;
-    left: 10%;
-    width: 80%;
+    left: 5%;
+    width: 90%;
     height: 72%;
     border-radius: 10px;
 }
@@ -106,9 +105,9 @@ footer{
 }
 #factry .room div#server_room{
     background-color: #C4C4C4;
-    left: 25%;
+    left: 24.5%;
     top: 52%;
-    width: 74%;
+    width: 73%;
     height: 15%;
     position: absolute;
     line-height: 400%;
@@ -139,7 +138,7 @@ footer{
     border-radius: 0 10px 0 0;
 }
 #A202 .room div.A202_3{
-    width:99.5%;
+    width: 99%;
     height:33.3%;
     border-top: none;
     line-height: 147px;
@@ -262,7 +261,7 @@ img{
         float: unset;
     }
     #factry .room div {
-        width: 24.2%;
+        width: 24%;
     }
     #A202 .room div.A202_2 {
         width: 66.5%;
