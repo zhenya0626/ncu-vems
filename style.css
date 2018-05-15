@@ -283,3 +283,19 @@ img{
     }
 }
 
+
+@media screen and (max-width: 330px){
+    /* スマホとか用のスタイル */
+    header{
+        font-size: 15px;
+        text-align: center;
+    line-height: 36px;
+        padding: 0px;
+        height:36px;
+    }
+    .section{
+        width:95%;
+    }
+}
+
+

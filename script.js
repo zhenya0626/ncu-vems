@@ -494,7 +494,7 @@ var chart_factry = new Chart(ctx1, {
             backgroundColor: 'RGBA(56,134,70, 0.4)',
             borderColor: 'RGBA(56,134,70, 1)',
             borderWidth: 1,
-            pointRadius: 2,
+            pointRadius: 1,
         }]
     },
     options: { // チャートのその他オプション
@@ -555,7 +555,8 @@ var chart_A202 = new Chart(ctx2, {
             data: trend_A202_yen_chart,
             backgroundColor: 'RGBA(56,134,70, 0.4)',
             borderColor: 'RGBA(56,134,70, 1)',
-            borderWidth: 1
+            borderWidth: 1,
+            pointRadius: 1,
         }]
     },
     options: { // チャートのその他オプション
@@ -611,7 +612,8 @@ var chart_A203 = new Chart(ctx3, {
             data: trend_A203_yen_chart,
             backgroundColor: 'RGBA(56,134,70, 0.4)',
             borderColor: 'RGBA(56,134,70, 1)',
-            borderWidth: 1
+            borderWidth: 1,
+            pointRadius: 1,
         }]
     },
     options: { // チャートのその他オプション
